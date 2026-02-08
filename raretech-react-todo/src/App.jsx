@@ -1,26 +1,41 @@
+import React, { useState } from 'react';
 import './App.css';
 
+
+
+const initTodo = [
+  {
+    id: 1,
+    title: "Todo1",
+  },
+  {
+    id: 2,
+    title: "Todo2",
+  }
+]
+
 export const App = () => {
+  const [todoList, setTodoList] = React.useState(initTodo);
   return (
     <div className="App">
-      <h1>TodoList</h1>
+      <h1 className="title">TodoList</h1>
       {/* Todo追加領域 */}
-      <section>
-        <h2>Add TODO</h2>
+      <section className='common-area'>
+        <h2 className="add-title">Add TODO</h2>
         <input type="text" />
       </section>
 
       {/* Todo一覧表示領域 */}
-      <section>
-        <ul>
-          <li>
-            <span>タスク1</span>
-            <i className="fa-solid fa-trash-can"></i>
-          </li>
-          <li>
-            <span>タスク2</span>
-            <i className="fa-solid fa-trash-can"></i>
-          </li>
+      <section className='common-area'>
+        <ul className='todo-list'>
+          {todoList.map((todo) => {
+            return (
+              <li className='todo' key={todo.id}>
+                <span className='todo-task'>{todo.title}</span>
+                <i className="fa-solid fa-trash-can"></i>
+              </li>
+            );
+          })}
         </ul>
       </section>
 
