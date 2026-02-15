@@ -27,8 +27,8 @@ export const App = () => {
   const handleAddTodo = (event) => {
     if (event.key==="Enter" && addInputValue!=="") {
       const newUniqueId = uniqueId + 1;
+      const newTodoList = [...todoList, {id: newUniqueId, title: addInputValue}];
       setUniqueId(newUniqueId);
-      const newTodoList = [...todoList, {id: uniqueId, title: addInputValue}];
       setTodoList(newTodoList);
       setAddInputValue("");
     }
